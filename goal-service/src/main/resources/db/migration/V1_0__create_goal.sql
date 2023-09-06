@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS goal (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  description CHARACTER(500),
+  completed BOOLEAN
+);

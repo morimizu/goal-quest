@@ -12,15 +12,18 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "goal")
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GoalJpa implements Goal {
+public class GoalJpa implements Goal, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "description")
