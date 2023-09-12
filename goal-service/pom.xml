@@ -48,6 +48,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.benjaminrperry</groupId>
+            <artifactId>rabbit-communicator</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -86,6 +92,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <imageName>goal-quest/goal-service</imageName>
                 </configuration>
             </plugin>
             <plugin>

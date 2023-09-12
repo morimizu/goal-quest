@@ -2,6 +2,7 @@ package com.benjaminrperry.goalservice.messaging;
 
 import com.benjaminrperry.goalservice.api.Goal;
 import com.benjaminrperry.goalservice.api.GoalClient;
+import com.benjaminrperry.messaging.RabbitSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

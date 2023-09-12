@@ -1,6 +1,5 @@
 package com.benjaminrperry.messaging.configuration;
 
-import com.benjaminrperry.goalservice.configuration.AppRabbitConfigProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
