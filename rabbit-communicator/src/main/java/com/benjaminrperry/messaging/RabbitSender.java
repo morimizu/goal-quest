@@ -1,6 +1,6 @@
-package com.benjaminrperry.goalservice.messaging;
+package com.benjaminrperry.messaging;
 
-import com.benjaminrperry.goalservice.configuration.AppRabbitConfigProperties;
+import com.benjaminrperry.messaging.configuration.AppRabbitConfigProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
