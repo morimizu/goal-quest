@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalservice.configuration;
+package com.benjaminrperry.messaging.configuration;
 
 import lombok.Getter;
 import lombok.Setter;

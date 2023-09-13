@@ -1,15 +1,12 @@
 package com.benjaminrperry.goalservice;
 
-import com.benjaminrperry.goalservice.configuration.AppRabbitConfigProperties;
-import com.benjaminrperry.goalservice.messaging.RabbitGoalClient;
-import com.benjaminrperry.goalservice.messaging.RabbitSender;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan("com.benjaminrperry.messaging")
 @EnableRabbit
 public class GoalServiceApplication {
 
