@@ -22,11 +22,16 @@ public class RabbitSender {
     }
 
     public void send(Object message){
-        rabbitTemplate.convertAndSend(rabbitConfigProperties.getExchangeName(), rabbitConfigProperties.getRoutingKey(), message);
+        rabbitTemplate.convertAndSend(rabbitConfigProperties.getExchangeName(), routingKey(), message);
     }
 
     public Object sendAndReceive(Object message){
         log.info("attempting to convert and send/receive message: "+ message.toString());
-        return rabbitTemplate.convertSendAndReceive(rabbitConfigProperties.getExchangeName(), rabbitConfigProperties.getRoutingKey(), message);
+        return rabbitTemplate.convertSendAndReceive(rabbitConfigProperties.getExchangeName(), routingKey(), message);
     }
+
+    private String routingKey(){
+        return rabbitConfigProperties.getBindings().get("goal").getRoutingKey();
+    }
+
 }

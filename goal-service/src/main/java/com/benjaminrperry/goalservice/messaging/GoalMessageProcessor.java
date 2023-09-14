@@ -1,6 +1,10 @@
 package com.benjaminrperry.goalservice.messaging;
 
-import com.benjaminrperry.goalservice.api.Goal;
+import com.benjaminrperry.client.goal.Goal;
+import com.benjaminrperry.client.goal.messaging.CompleteGoalMessage;
+import com.benjaminrperry.client.goal.messaging.CreateGoalMessage;
+import com.benjaminrperry.client.goal.messaging.GetGoalMessage;
+import com.benjaminrperry.client.goal.messaging.GetGoalsMessage;
 import com.benjaminrperry.goalservice.service.GoalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +17,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-@RabbitListener(queues = "${app.rabbit.queue-name}")
+@RabbitListener(queues = "${goalquest.rabbit.bindings.goal.queue-name}")
 @Component
 @Slf4j
 @RequiredArgsConstructor

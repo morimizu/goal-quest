@@ -1,6 +1,6 @@
 package com.benjaminrperry.goalservice.entity;
 
-import com.benjaminrperry.goalservice.api.Goal;
+import com.benjaminrperry.client.goal.Goal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

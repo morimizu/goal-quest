@@ -1,8 +1,13 @@
-app:
+server:
+  servlet:
+    context-path: goals
+goalquest:
   rabbit:
     exchange-name: goal-quest.ex
-    queue-name: goal.qu
-    routing-key: goal
+    bindings:
+      goal:
+        queue-name: goal.qu
+        routing-key: goal
 spring:
   datasource:
     url: jdbc:h2:file:/data/testdb

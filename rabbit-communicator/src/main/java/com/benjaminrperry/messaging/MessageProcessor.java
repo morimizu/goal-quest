@@ -4,7 +4,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 
-@RabbitListener(queues = "${app.rabbit.queue-name}")
+@RabbitListener(queues = "${goalquest.rabbit.bindings.goal.queue-name}")
 public interface MessageProcessor<T> {
 
     @RabbitHandler
