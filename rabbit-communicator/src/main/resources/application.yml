@@ -1,0 +1,8 @@
+app:
+  rabbit:
+    exchange-name: goal-quest.ex
+    bindings:
+      goal:
+        queue-name: goal.qu
+        routing-key: goal
+

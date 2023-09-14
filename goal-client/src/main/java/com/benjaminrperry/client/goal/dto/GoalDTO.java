@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalservice.dto;
+package com.benjaminrperry.client.goal.dto;
 
 import com.benjaminrperry.client.goal.Goal;
 import lombok.Builder;

@@ -1,13 +1,14 @@
-package com.benjaminrperry.goalservice.messaging;
+package com.benjaminrperry.client.goal.messaging;
 
-import com.benjaminrperry.goalservice.api.Goal;
-import com.benjaminrperry.goalservice.api.GoalClient;
+import com.benjaminrperry.client.goal.Goal;
+import com.benjaminrperry.client.goal.GoalClient;
 import com.benjaminrperry.messaging.RabbitSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -17,7 +18,6 @@ public class RabbitGoalClient implements GoalClient {
 
     @Override
     public Goal createGoal(String description) {
-        log.info("creating new goal with descr: "+ description);
         var createGoal = CreateGoalMessage.builder().description(description).build();
         return (Goal) sender.sendAndReceive(createGoal);
     }

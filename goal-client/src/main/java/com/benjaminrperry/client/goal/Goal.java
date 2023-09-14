@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalservice.api;
+package com.benjaminrperry.client.goal;
 
 public interface Goal {
     public Integer getId();

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.benjaminrperry</groupId>
-    <artifactId>rabbit-communicator</artifactId>
+    <artifactId>goal-client</artifactId>
     <version>1.0.0</version>
-    <name>rabbit-communicator</name>
-    <description>rabbit-communicator</description>
+    <name>goal-client</name>
+    <description>goal-client</description>
     <packaging>jar</packaging>
     <properties>
         <java.version>17</java.version>
@@ -22,6 +22,10 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
         <dependency>
@@ -29,7 +33,11 @@
             <artifactId>spock-spring</artifactId>
             <version>2.4-M1-groovy-4.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.benjaminrperry</groupId>
+            <artifactId>rabbit-communicator</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -38,11 +46,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

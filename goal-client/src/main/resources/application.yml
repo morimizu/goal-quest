@@ -1,0 +1,12 @@
+goalquest:
+  client:
+    goal:
+      server:
+        host: localhost
+        port: 8080
+      urls:
+        base: http://${goalquest.client.goal.server.host}:${goalquest.client.goal.server.port}/goal
+        create: ${goalquest.client.goal.urls.base}
+        get: ${goalquest.client.goal.urls.base}/{id}
+
+

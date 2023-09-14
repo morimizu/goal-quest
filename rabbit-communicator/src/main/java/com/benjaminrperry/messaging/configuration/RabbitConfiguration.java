@@ -20,15 +20,17 @@ public class RabbitConfiguration {
 
     @Bean
     public Queue queue() {
-        return new Queue(rabbitConfigProperties.getQueueName());
+        var name = rabbitConfigProperties.getBindings().get("goal").getQueueName();
+        return new Queue(name);
     }
 
     @Bean
     public Binding exchangeBinding() {
+        var routingKey = rabbitConfigProperties.getBindings().get("goal").getQueueName();
         return BindingBuilder
                 .bind(queue())
                 .to(topicExchange())
-                .with(rabbitConfigProperties.getRoutingKey());
+                .with(routingKey);
     }
 
 
