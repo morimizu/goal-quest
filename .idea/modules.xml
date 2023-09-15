@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/goal-client/goal-client.iml" filepath="$PROJECT_DIR$/goal-client/goal-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/goal-quest.iml" filepath="$PROJECT_DIR$/.idea/goal-quest.iml" />
       <module fileurl="file://$PROJECT_DIR$/goal-service/goal-service.iml" filepath="$PROJECT_DIR$/goal-service/goal-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goalquest-rest-gateway/goalquest-rest-gateway.iml" filepath="$PROJECT_DIR$/goalquest-rest-gateway/goalquest-rest-gateway.iml" />
     </modules>
   </component>
 </project>
