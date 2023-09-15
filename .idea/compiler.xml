@@ -10,15 +10,23 @@
         <module name="goal-client" />
         <module name="goal-service-api" />
         <module name="rabbit-communicator" />
+        <module name="goalquest-rest-gateway" />
         <module name="goal-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="goal-client (1)" target="17" />
+      <module name="goal-client (2)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="goal-client" options="-parameters" />
+      <module name="goal-client (1)" options="-parameters" />
+      <module name="goal-client (2)" options="-parameters" />
       <module name="goal-service" options="-parameters" />
       <module name="goal-service-api" options="-parameters" />
+      <module name="goalquest-rest-gateway" options="-parameters" />
       <module name="rabbit-communicator" options="-parameters" />
     </option>
   </component>

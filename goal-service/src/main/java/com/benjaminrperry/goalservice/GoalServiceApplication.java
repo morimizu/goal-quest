@@ -10,7 +10,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.reactive.config.EnableWebFlux;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.benjaminrperry.goalservice", "com.benjaminrperry.messaging", "com.benjaminrperry.client"})
+@ComponentScan(basePackages = {"com.benjaminrperry.goalservice", "com.benjaminrperry.messaging"})
 @EnableWebFlux
 @EnableRabbit
 public class GoalServiceApplication {
