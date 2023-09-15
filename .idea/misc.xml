@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/goal-service/pom.xml" />
         <option value="$PROJECT_DIR$/rabbit-communicator/pom.xml" />
         <option value="$PROJECT_DIR$/goal-client/pom.xml" />
+        <option value="$PROJECT_DIR$/goal-service-api/pom.xml" />
       </list>
     </option>
   </component>

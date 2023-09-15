@@ -1,12 +1,11 @@
 package com.benjaminrperry.goalservice.controller;
 
 import com.benjaminrperry.client.goal.messaging.RabbitGoalClient;
-import com.benjaminrperry.client.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.dto.CreateGoalDTO;
+import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
 import com.benjaminrperry.goalservice.converter.GoalConverter;
-import com.benjaminrperry.client.goal.dto.CreateGoalDTO;
-import com.benjaminrperry.client.goal.dto.GoalDTO;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
