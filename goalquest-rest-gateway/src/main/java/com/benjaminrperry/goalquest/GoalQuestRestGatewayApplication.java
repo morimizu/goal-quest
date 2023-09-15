@@ -11,7 +11,6 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 @EnableRabbit
 public class GoalQuestRestGatewayApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(GoalQuestRestGatewayApplication.class, args);
     }

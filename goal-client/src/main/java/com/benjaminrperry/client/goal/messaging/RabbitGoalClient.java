@@ -9,12 +9,10 @@ import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
 import com.benjaminrperry.messaging.RabbitSender;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Slf4j
 @Component
 @RequiredArgsConstructor
 public class RabbitGoalClient implements GoalClient {
