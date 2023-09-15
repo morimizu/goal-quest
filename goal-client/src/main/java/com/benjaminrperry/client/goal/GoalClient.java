@@ -1,5 +1,7 @@
 package com.benjaminrperry.client.goal;
 
+import com.benjaminrperry.goalquest.api.goal.Goal;
+
 import java.util.List;
 
 public interface GoalClient {

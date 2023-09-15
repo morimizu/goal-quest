@@ -1,6 +1,6 @@
 package com.benjaminrperry.goalservice.service;
 
-import com.benjaminrperry.client.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.Goal;
 import com.benjaminrperry.goalservice.entity.GoalJpa;
 import com.benjaminrperry.goalservice.repository.GoalRepository;
 import lombok.RequiredArgsConstructor;

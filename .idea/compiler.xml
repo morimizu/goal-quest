@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="goal-service" />
         <module name="goal-client" />
+        <module name="goal-service-api" />
         <module name="rabbit-communicator" />
+        <module name="goal-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="goal-client" options="-parameters" />
       <module name="goal-service" options="-parameters" />
+      <module name="goal-service-api" options="-parameters" />
       <module name="rabbit-communicator" options="-parameters" />
     </option>
   </component>

@@ -1,10 +1,10 @@
 package com.benjaminrperry.client.goal.rest;
 
-import com.benjaminrperry.client.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.dto.CreateGoalDTO;
+import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
 import com.benjaminrperry.client.goal.GoalClient;
 import com.benjaminrperry.client.goal.configuration.ClientUrlProperties;
-import com.benjaminrperry.client.goal.dto.CreateGoalDTO;
-import com.benjaminrperry.client.goal.dto.GoalDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.client.RestTemplate;
 

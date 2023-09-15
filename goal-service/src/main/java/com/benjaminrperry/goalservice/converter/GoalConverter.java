@@ -1,7 +1,7 @@
 package com.benjaminrperry.goalservice.converter;
 
-import com.benjaminrperry.client.goal.Goal;
-import com.benjaminrperry.client.goal.dto.GoalDTO;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
 import com.benjaminrperry.goalservice.entity.GoalJpa;
 import lombok.experimental.UtilityClass;
 

@@ -1,10 +1,10 @@
 package com.benjaminrperry.goalservice.messaging;
 
-import com.benjaminrperry.client.goal.Goal;
-import com.benjaminrperry.client.goal.messaging.CompleteGoalMessage;
-import com.benjaminrperry.client.goal.messaging.CreateGoalMessage;
-import com.benjaminrperry.client.goal.messaging.GetGoalMessage;
-import com.benjaminrperry.client.goal.messaging.GetGoalsMessage;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.messaging.CompleteGoalMessage;
+import com.benjaminrperry.goalquest.api.goal.messaging.CreateGoalMessage;
+import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
+import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
 import com.benjaminrperry.goalservice.service.GoalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

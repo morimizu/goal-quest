@@ -39,6 +39,11 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
+            <groupId>com.benjaminrperry</groupId>
+            <artifactId>goal-service-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
