@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /goalquest
+management:
+  server:
+    port: 9090
+goalquest:
+  rabbit:
+    exchange-name: goal-quest.ex
+    bindings:
+      goal:
+        queue-name: goal.qu
+        routing-key: goal
+gateway:
+  api:
+    version: 1.0.0
+    title: Sample API
+    description: Description of the API...
+    tos: MY TERMS OF SERVICE
+    license:
+      name: MY LICENSE
+      url: MY LICENSE URL
+    external-doc:
+      desc: MY WIKI PAGE
+      url: MY WIKI URL
+    contact:
+      name: NAME OF CONTACT
+      url: URL TO CONTACT
+      email: contact@mail.com
