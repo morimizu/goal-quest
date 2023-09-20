@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/goalquest-rest-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/task-service/pom.xml" />
         <option value="$PROJECT_DIR$/task-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/task-client/pom.xml" />
       </list>
     </option>
   </component>
