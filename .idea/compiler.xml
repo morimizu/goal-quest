@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="goal-client" />
         <module name="goal-service-api" />
         <module name="task-service-api" />
         <module name="goal-service" />
+        <module name="task-client" />
         <module name="task-service" />
         <module name="rabbit-communicator" />
         <module name="goalquest-rest-gateway" />
@@ -30,6 +30,7 @@
       <module name="goal-service-api" options="-parameters" />
       <module name="goalquest-rest-gateway" options="-parameters" />
       <module name="rabbit-communicator" options="-parameters" />
+      <module name="task-client" options="-parameters" />
       <module name="task-service" options="-parameters" />
       <module name="task-service-api" options="-parameters" />
     </option>
