@@ -1,8 +1,8 @@
-package com.benjaminrperry.goalservice.service;
+package com.benjaminrperry.goalquest.goalservice.service;
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
-import com.benjaminrperry.goalservice.entity.GoalJpa;
-import com.benjaminrperry.goalservice.repository.GoalRepository;
+import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
+import com.benjaminrperry.goalquest.goalservice.repository.GoalRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

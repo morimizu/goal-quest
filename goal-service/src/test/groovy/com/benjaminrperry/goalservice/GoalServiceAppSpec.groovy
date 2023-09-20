@@ -1,5 +1,6 @@
 package com.benjaminrperry.goalservice
 
+import com.benjaminrperry.goalquest.goalservice.GoalServiceApplication
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 

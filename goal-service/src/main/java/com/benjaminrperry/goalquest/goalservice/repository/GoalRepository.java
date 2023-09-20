@@ -1,6 +1,6 @@
-package com.benjaminrperry.goalservice.repository;
+package com.benjaminrperry.goalquest.goalservice.repository;
 
-import com.benjaminrperry.goalservice.entity.GoalJpa;
+import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

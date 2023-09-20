@@ -1,8 +1,8 @@
-package com.benjaminrperry.goalservice.converter;
+package com.benjaminrperry.goalquest.goalservice.converter;
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
 import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
-import com.benjaminrperry.goalservice.entity.GoalJpa;
+import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
