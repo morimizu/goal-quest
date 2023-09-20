@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalservice.entity;
+package com.benjaminrperry.goalquest.goalservice.entity;
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
 import jakarta.persistence.Column;

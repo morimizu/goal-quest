@@ -1,12 +1,12 @@
-package com.benjaminrperry.goalservice.messaging;
+package com.benjaminrperry.goalquest.goalservice.messaging;
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
 import com.benjaminrperry.goalquest.api.goal.messaging.CompleteGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.CreateGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
-import com.benjaminrperry.goalservice.converter.GoalConverter;
-import com.benjaminrperry.goalservice.service.GoalService;
+import com.benjaminrperry.goalquest.goalservice.converter.GoalConverter;
+import com.benjaminrperry.goalquest.goalservice.service.GoalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static com.benjaminrperry.goalservice.converter.GoalConverter.toGoalDTO;
+import static com.benjaminrperry.goalquest.goalservice.converter.GoalConverter.toGoalDTO;
 
 @RabbitListener(queues = "${goalquest.rabbit.bindings.goal.queue-name}")
 @Component

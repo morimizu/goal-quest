@@ -1,0 +1,20 @@
+server:
+  port: 8082
+  servlet:
+    context-path: tasks
+goalquest:
+  rabbit:
+    exchange-name: goal-quest.ex
+    bindings:
+      task:
+        queue-name: task.qu
+        routing-key: task
+spring:
+  datasource:
+    url: jdbc:h2:file:/data/testdb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
