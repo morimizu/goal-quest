@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalquest.taskservice.entity.task;
+package com.benjaminrperry.goalquest.api.task;
 
 public interface Task {
     Long getId();

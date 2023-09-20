@@ -1,8 +1,8 @@
 package com.benjaminrperry.goalquest.taskservice.service;
 
-import com.benjaminrperry.goalquest.taskservice.api.messaging.CreateTaskMessage;
-import com.benjaminrperry.goalquest.taskservice.api.messaging.UpdateTaskMessage;
-import com.benjaminrperry.goalquest.taskservice.entity.task.Task;
+import com.benjaminrperry.goalquest.api.task.messaging.CreateTaskMessage;
+import com.benjaminrperry.goalquest.api.task.messaging.UpdateTaskMessage;
+import com.benjaminrperry.goalquest.api.task.Task;
 import com.benjaminrperry.goalquest.taskservice.repository.TaskRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

@@ -1,9 +1,9 @@
 package com.benjaminrperry.goalquest.taskservice.messaging;
 
-import com.benjaminrperry.goalquest.taskservice.api.messaging.CreateTaskMessage;
-import com.benjaminrperry.goalquest.taskservice.api.messaging.DeleteTaskMessage;
-import com.benjaminrperry.goalquest.taskservice.api.messaging.UpdateTaskMessage;
-import com.benjaminrperry.goalquest.taskservice.entity.task.Task;
+import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.api.task.messaging.CreateTaskMessage;
+import com.benjaminrperry.goalquest.api.task.messaging.DeleteTaskMessage;
+import com.benjaminrperry.goalquest.api.task.messaging.UpdateTaskMessage;
 import com.benjaminrperry.goalquest.taskservice.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
