@@ -1,6 +1,6 @@
 package com.benjaminrperry.goalquest.taskservice.repository;
 
-import com.benjaminrperry.goalquest.taskservice.entity.task.Task;
+import com.benjaminrperry.goalquest.api.task.Task;
 import com.benjaminrperry.goalquest.taskservice.entity.task.TaskJpa;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

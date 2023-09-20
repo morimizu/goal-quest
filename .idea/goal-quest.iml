@@ -10,6 +10,8 @@
       <sourceFolder url="file://$MODULE_DIR$/goal-client/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/goalquest-rest-gateway/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/task-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/task-service-api/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/task-service-api/src/main/test/groovy" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

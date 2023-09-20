@@ -9,10 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="goal-client" />
         <module name="goal-service-api" />
+        <module name="task-service-api" />
+        <module name="goal-service" />
         <module name="task-service" />
         <module name="rabbit-communicator" />
         <module name="goalquest-rest-gateway" />
-        <module name="goal-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -30,6 +31,7 @@
       <module name="goalquest-rest-gateway" options="-parameters" />
       <module name="rabbit-communicator" options="-parameters" />
       <module name="task-service" options="-parameters" />
+      <module name="task-service-api" options="-parameters" />
     </option>
   </component>
 </project>

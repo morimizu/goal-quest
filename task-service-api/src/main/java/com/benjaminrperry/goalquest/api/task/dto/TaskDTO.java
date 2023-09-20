@@ -1,6 +1,6 @@
-package com.benjaminrperry.goalquest.taskservice.api.dto;
+package com.benjaminrperry.goalquest.api.task.dto;
 
-import com.benjaminrperry.goalquest.taskservice.entity.task.Task;
+import com.benjaminrperry.goalquest.api.task.Task;
 import lombok.Builder;
 import lombok.Data;
 
