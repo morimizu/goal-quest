@@ -9,6 +9,7 @@ import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
 import com.benjaminrperry.messaging.RabbitSender;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,26 +20,32 @@ public class RabbitGoalClient implements GoalClient {
 
     private final RabbitSender sender;
 
+    @Value("${goalquest.rabbit.exchange-name}")
+    private String exchangeName;
+
+    @Value("${goalquest.rabbit.bindings.goal.routing-key}")
+    private String routingKey;
+
     @Override
     public Goal createGoal(String description) {
         var createGoal = CreateGoalMessage.builder().description(description).build();
-        return (Goal) sender.sendAndReceive(createGoal);
+        return (Goal) sender.sendAndReceive(exchangeName, routingKey, createGoal);
     }
 
     @Override
     public Goal getGoal(Integer goalId) {
         var getGoal = GetGoalMessage.builder().goalId(goalId).build();
-        return (Goal) sender.sendAndReceive(getGoal);
+        return (Goal) sender.sendAndReceive(exchangeName, routingKey, getGoal);
     }
 
     @Override
     public Goal completeGoal(Integer goalId) {
         var completeGoal = CompleteGoalMessage.builder().goalId(goalId).build();
-        return (Goal) sender.sendAndReceive(completeGoal);
+        return (Goal) sender.sendAndReceive(exchangeName, routingKey, completeGoal);
     }
 
     @Override
     public List<Goal> getAllGoals() {
-        return (List<Goal>) sender.sendAndReceive(GetGoalsMessage.builder().build());
+        return (List<Goal>) sender.sendAndReceive(exchangeName, routingKey, GetGoalsMessage.builder().build());
     }
 }

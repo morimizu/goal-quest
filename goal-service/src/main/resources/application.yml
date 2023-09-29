@@ -9,6 +9,28 @@ goalquest:
       goal:
         queue-name: goal.qu
         routing-key: goal
+      task:
+        queue-name: task.qu
+        routing-key: task
+  client:
+    goal:
+      server:
+        host: localhost
+        port: 8081
+      urls:
+        base: http://${goalquest.client.goal.server.host}:${goalquest.client.goal.server.port}/goal
+        create: ${goalquest.client.goal.urls.base}
+        get: ${goalquest.client.goal.urls.base}/{id}
+    task:
+      server:
+        host: localhost
+        port: 8082
+      urls:
+        base: http://${goalquest.client.task.server.host}:${goalquest.client.task.server.port}/goal
+        create: ${goalquest.client.task.urls.base}
+        get: ${goalquest.client.task.urls.base}/{id}
+        update: ${goalquest.client.task.urls.get}
+        complete: ${goalquest.client.task.urls.update}/complete
 spring:
   datasource:
     url: jdbc:h2:file:/data/testdb

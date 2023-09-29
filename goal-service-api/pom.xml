@@ -25,5 +25,10 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.benjaminrperry</groupId>
+            <artifactId>task-service-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 </project>
