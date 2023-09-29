@@ -1,10 +1,12 @@
 package com.benjaminrperry.goalquest.goalservice.messaging;
 
+import com.benjaminrperry.client.task.messaging.RabbitTaskClient;
 import com.benjaminrperry.goalquest.api.goal.Goal;
 import com.benjaminrperry.goalquest.api.goal.messaging.CompleteGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.CreateGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
+import com.benjaminrperry.goalquest.api.task.Task;
 import com.benjaminrperry.goalquest.goalservice.converter.GoalConverter;
 import com.benjaminrperry.goalquest.goalservice.service.GoalService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +33,8 @@ public class GoalMessageProcessor {
     @RabbitHandler
     public Goal handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
         log.info("received new message: "+ createGoalMessage);
-        var goal = goalService.createGoal(createGoalMessage.getDescription());
+        var goal = goalService.createGoal(createGoalMessage.getDescription(), createGoalMessage.getCreateTaskList());
+        List<Task> goalTasks = goalService.getGoalTasks(goal.getId());
         return toGoalDTO(goal);
     }
 

@@ -24,11 +24,12 @@ public class GoalJpa implements Goal, Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "description")
     private String description;
 
+    @Builder.Default
     @Column(name = "completed")
     private boolean completed = false;
 

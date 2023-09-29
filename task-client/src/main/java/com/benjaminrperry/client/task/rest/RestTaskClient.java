@@ -3,9 +3,10 @@ package com.benjaminrperry.client.task.rest;
 import com.benjaminrperry.client.task.TaskClient;
 import com.benjaminrperry.goalquest.api.task.Task;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 
 import java.util.List;
-
+@Profile("task-rest-client")
 @RequiredArgsConstructor
 public class RestTaskClient implements TaskClient {
 

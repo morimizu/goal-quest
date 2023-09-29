@@ -7,6 +7,7 @@ import com.benjaminrperry.goalquest.api.task.dto.CreateTaskDTO;
 import com.benjaminrperry.goalquest.api.task.dto.UpdateTaskDTO;
 import com.benjaminrperry.goalquest.api.task.messaging.GetTaskMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -17,6 +18,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
+@Profile("task-rest-client")
 @Component
 @RequiredArgsConstructor
 public class TaskWebfluxClient{

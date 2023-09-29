@@ -12,6 +12,9 @@ goalquest:
       goal:
         queue-name: goal.qu
         routing-key: goal
+      task:
+        queue-name: task.qu
+        routing-key: task
 gateway:
   api:
     version: 1.0.0

@@ -8,5 +8,6 @@ import java.io.Serializable;
 @Data
 @Builder
 public class GetAllTaskMessage implements Serializable {
+    @Builder.Default
     private boolean getAllTaskMessage = true;
 }
