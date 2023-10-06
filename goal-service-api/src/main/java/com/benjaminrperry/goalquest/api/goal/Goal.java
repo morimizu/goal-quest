@@ -1,10 +1,13 @@
 package com.benjaminrperry.goalquest.api.goal;
 
-public interface Goal {
-    public Long getId();
-    public String getDescription();
-    public boolean isCompleted();
-    
+import java.util.List;
 
-    public void setCompleted(boolean completed);
+public interface Goal {
+    Long getId();
+    String getDescription();
+    boolean isCompleted();
+    List<Step> getSteps();
+    void setSteps(List<Step> steps);
+    void addStep(Step step);
+    void setCompleted(boolean completed);
 }

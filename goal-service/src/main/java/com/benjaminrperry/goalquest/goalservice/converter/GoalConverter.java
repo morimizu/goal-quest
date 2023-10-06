@@ -1,7 +1,9 @@
 package com.benjaminrperry.goalquest.goalservice.converter;
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.Step;
 import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
+import com.benjaminrperry.goalquest.api.goal.dto.StepDto;
 import com.benjaminrperry.goalquest.api.task.Task;
 import com.benjaminrperry.goalquest.api.task.converter.TaskConverter;
 import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
@@ -13,15 +15,18 @@ import java.util.List;
 @UtilityClass
 public class GoalConverter {
     public static GoalDTO toGoalDTO(Goal goal) {
-        return toGoalDTO(goal,null);
-    }
-    public static GoalDTO toGoalDTO(Goal goal, List<Task> tasks) {
         return GoalDTO.builder()
                 .id(goal.getId())
                 .description(goal.getDescription())
                 .completed(goal.isCompleted())
-                .tasks(convertTasks(tasks))
+                .steps(convertSteps(goal.getSteps()))
                 .build();
+    }
+    private static List<Step> convertSteps(List<Step> steps) {
+        return steps.stream()
+                .map(StepConverter::toDto)
+                .map(step -> (Step) step)
+                .toList();
     }
     public static Goal toGoal(GoalDTO dto) {
         return GoalJpa.builder()
@@ -29,9 +34,5 @@ public class GoalConverter {
                 .description(dto.getDescription())
                 .completed(dto.isCompleted())
                 .build();
-    }
-
-    private static List<TaskDTO> convertTasks(List<Task> tasks) {
-        return (tasks != null) ? tasks.stream().map(TaskConverter::toDto).toList() : List.of();
     }
 }
