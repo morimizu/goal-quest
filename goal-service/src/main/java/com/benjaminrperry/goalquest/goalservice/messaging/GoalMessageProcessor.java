@@ -31,7 +31,7 @@ public class GoalMessageProcessor {
     @RabbitHandler
     public Goal handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
         log.info("received new message: "+ createGoalMessage);
-        var goal = goalService.createGoal(createGoalMessage.getDescription(), createGoalMessage.getCreateTaskList());
+        var goal = goalService.createGoal(createGoalMessage.getDescription(), createGoalMessage.getStepList());
         return GoalConverter.toGoalDTO(goal);
     }
 

@@ -1,7 +1,7 @@
 package com.benjaminrperry.goalquest.api.task.converter;
 
-import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
 import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
