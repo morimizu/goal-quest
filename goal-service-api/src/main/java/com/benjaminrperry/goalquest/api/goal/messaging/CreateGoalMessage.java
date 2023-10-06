@@ -1,5 +1,6 @@
 package com.benjaminrperry.goalquest.api.goal.messaging;
 
+import com.benjaminrperry.goalquest.api.goal.dto.CreateStepDto;
 import com.benjaminrperry.goalquest.api.task.dto.CreateTaskDTO;
 import lombok.Builder;
 import lombok.Data;
@@ -11,5 +12,5 @@ import java.util.List;
 @Builder
 public class CreateGoalMessage implements Serializable {
     private String description;
-    private List<CreateTaskDTO> createTaskList;
+    private List<CreateStepDto> stepList;
 }

@@ -1,6 +1,5 @@
 package com.benjaminrperry.goalquest.goalservice.messaging;
 
-import com.benjaminrperry.client.task.messaging.RabbitTaskClient;
 import com.benjaminrperry.goalquest.api.goal.Goal;
 import com.benjaminrperry.goalquest.api.goal.messaging.CompleteGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.CreateGoalMessage;
@@ -20,7 +19,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static com.benjaminrperry.goalquest.goalservice.converter.GoalConverter.toGoalDTO;
 
 @RabbitListener(queues = "${goalquest.rabbit.bindings.goal.queue-name}")
 @Component
@@ -34,8 +32,7 @@ public class GoalMessageProcessor {
     public Goal handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
         log.info("received new message: "+ createGoalMessage);
         var goal = goalService.createGoal(createGoalMessage.getDescription(), createGoalMessage.getCreateTaskList());
-        List<Task> goalTasks = goalService.getGoalTasks(goal.getId());
-        return toGoalDTO(goal);
+        return GoalConverter.toGoalDTO(goal);
     }
 
     @RabbitHandler

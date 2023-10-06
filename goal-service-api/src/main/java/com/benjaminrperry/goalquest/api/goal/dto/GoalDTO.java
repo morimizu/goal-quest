@@ -2,6 +2,7 @@ package com.benjaminrperry.goalquest.api.goal.dto;
 
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.Step;
 import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,12 @@ public class GoalDTO implements Goal, Serializable {
     private Long id;
     private String description;
     private boolean completed;
-    private List<TaskDTO> tasks;
+    private List<Step> steps;
+
+    @Override
+    public void addStep(Step step) {
+        throw new RuntimeException("Cannot add Step with this method. GoalDTO is read only");
+    }
 
     @Override
     public void setCompleted(boolean completed) {
