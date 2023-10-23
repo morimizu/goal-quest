@@ -1,6 +1,6 @@
 package com.benjaminrperry.goalquest.goalservice.entity.task;
 
-import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.goalservice.api.task.Task;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

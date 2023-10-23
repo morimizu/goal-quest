@@ -1,11 +1,11 @@
 package com.benjaminrperry.goalquest.goalservice.messaging;
 
-import com.benjaminrperry.goalquest.api.goal.Goal;
-import com.benjaminrperry.goalquest.api.goal.messaging.CompleteGoalMessage;
-import com.benjaminrperry.goalquest.api.goal.messaging.CreateGoalMessage;
-import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
-import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
-import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
+import com.benjaminrperry.goalquest.goalservice.api.goal.dto.GoalDTO;
+import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.CompleteGoalMessage;
+import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.CreateGoalMessage;
+import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.GetGoalMessage;
+import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.GetGoalsMessage;
 import com.benjaminrperry.goalquest.goalservice.converter.GoalConverter;
 import com.benjaminrperry.goalquest.goalservice.service.GoalService;
 import lombok.RequiredArgsConstructor;
@@ -29,20 +29,20 @@ public class GoalMessageProcessor {
     private final GoalService goalService;
 
     @RabbitHandler
-    public Goal handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
+    public GoalDTO handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
         log.info("received new message: "+ createGoalMessage);
         var goal = goalService.createGoal(createGoalMessage.getDescription(), createGoalMessage.getStepList());
         return GoalConverter.toGoalDTO(goal);
     }
 
     @RabbitHandler
-    public Optional<Goal> handelGetGoal(@Payload GetGoalMessage getGoalMessage) {
+    public Optional<GoalDTO> handelGetGoal(@Payload GetGoalMessage getGoalMessage) {
         return goalService.findGoalById(getGoalMessage.getGoalId())
                 .map(GoalConverter::toGoalDTO);
     }
 
     @RabbitHandler
-    public List<Goal> handelGetGoals(@Payload GetGoalsMessage getGoalsMessage) {
+    public List<GoalDTO> handelGetGoals(@Payload GetGoalsMessage getGoalsMessage) {
         if(getGoalsMessage.getGoalId() != null) {
             return List.of(goalService.findGoalById(getGoalsMessage.getGoalId())
                             .map(GoalConverter::toGoalDTO)
@@ -50,7 +50,6 @@ public class GoalMessageProcessor {
         }
         return goalService.findAllGoals().stream()
                 .map(GoalConverter::toGoalDTO)
-                .map(goal -> (Goal) goal)
                 .toList();
     }
 

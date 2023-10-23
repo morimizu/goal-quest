@@ -9,10 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="goal-client" />
         <module name="goal-service-api" />
-        <module name="task-service-api" />
         <module name="goal-service" />
-        <module name="task-client" />
-        <module name="task-service" />
         <module name="rabbit-communicator" />
         <module name="goalquest-rest-gateway" />
       </profile>
@@ -20,6 +17,9 @@
     <bytecodeTargetLevel>
       <module name="goal-client (1)" target="17" />
       <module name="goal-client (2)" target="17" />
+      <module name="task-client" target="17" />
+      <module name="task-service" target="17" />
+      <module name="task-service-api" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

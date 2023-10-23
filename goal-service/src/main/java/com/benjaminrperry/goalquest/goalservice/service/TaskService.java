@@ -1,6 +1,6 @@
 package com.benjaminrperry.goalquest.goalservice.service;
 
-import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.goalservice.api.task.Task;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

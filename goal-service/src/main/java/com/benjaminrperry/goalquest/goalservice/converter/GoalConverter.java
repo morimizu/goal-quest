@@ -1,12 +1,9 @@
 package com.benjaminrperry.goalquest.goalservice.converter;
 
-import com.benjaminrperry.goalquest.api.goal.Goal;
-import com.benjaminrperry.goalquest.api.goal.Step;
-import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
-import com.benjaminrperry.goalquest.api.goal.dto.StepDto;
-import com.benjaminrperry.goalquest.api.task.Task;
-import com.benjaminrperry.goalquest.api.task.converter.TaskConverter;
-import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
+import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
+import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
+import com.benjaminrperry.goalquest.goalservice.api.goal.dto.GoalDTO;
+import com.benjaminrperry.goalquest.goalservice.api.goal.dto.StepDto;
 import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import lombok.experimental.UtilityClass;
 
@@ -22,10 +19,9 @@ public class GoalConverter {
                 .steps(convertSteps(goal.getSteps()))
                 .build();
     }
-    private static List<Step> convertSteps(List<Step> steps) {
+    private static List<StepDto> convertSteps(List<Step> steps) {
         return steps.stream()
                 .map(StepConverter::toDto)
-                .map(step -> (Step) step)
                 .toList();
     }
     public static Goal toGoal(GoalDTO dto) {
