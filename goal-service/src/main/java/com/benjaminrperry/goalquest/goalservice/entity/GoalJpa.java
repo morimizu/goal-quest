@@ -47,7 +47,7 @@ public class GoalJpa implements Goal, Serializable {
         this.active = active;
     }
 
-    @OneToMany(targetEntity = StepJpa.class, mappedBy = "goal_id")
+    @OneToMany(targetEntity = StepJpa.class)
     private List<Step> steps;
 
     @Override
