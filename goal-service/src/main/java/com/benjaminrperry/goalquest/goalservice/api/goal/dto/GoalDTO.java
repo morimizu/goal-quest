@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class GoalDTO implements Serializable {
     private Long id;
-    private String description;
-    private boolean completed;
+    private String type;
+    private boolean active;
     private List<StepDto> steps;
 }

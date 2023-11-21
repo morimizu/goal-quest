@@ -5,12 +5,14 @@ import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 public class StepDto {
     private Long id;
-    private Long goalId;
     private String description;
-    private Integer orderIndex;
+    private LocalDateTime dueDate;
     private boolean completed;
+    private LocalDateTime completionDate;
 }

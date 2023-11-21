@@ -1,6 +1,7 @@
 package com.benjaminrperry.goalquest.goalservice.entity;
 
 import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
+import com.benjaminrperry.goalquest.goalservice.api.goal.GoalType;
 import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,11 +16,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "goal")
+@Table(name = "goals")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -30,12 +32,23 @@ public class GoalJpa implements Goal, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "type")
+    private GoalType type;
 
     @Builder.Default
-    @Column(name = "completed")
-    private boolean completed = false;
+    @Column(name = "active")
+    private boolean active = false;
+
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
+
+    @Override
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    @OneToMany(targetEntity = StepJpa.class)
+    private List<Step> steps;
 
     @Override
     public void setSteps(List<Step> steps) {
@@ -53,11 +66,5 @@ public class GoalJpa implements Goal, Serializable {
         steps.add(step);
     }
 
-    @Override
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
 
-    @OneToMany(targetEntity = StepJpa.class, mappedBy = "goal_id")
-    private List<Step> steps;
 }

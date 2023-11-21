@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface Goal {
     Long getId();
-    String getDescription();
-    boolean isCompleted();
-    List<com.benjaminrperry.goalquest.goalservice.api.goal.Step> getSteps();
-    void setSteps(List<com.benjaminrperry.goalquest.goalservice.api.goal.Step> steps);
+    GoalType getType();
+    boolean isActive();
+    List<Step> getSteps();
+    void setSteps(List<Step> steps);
     void addStep(Step step);
-    void setCompleted(boolean completed);
+    void setActive(boolean active);
 }

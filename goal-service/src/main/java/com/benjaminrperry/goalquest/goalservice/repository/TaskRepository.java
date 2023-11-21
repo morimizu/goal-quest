@@ -14,17 +14,16 @@ import java.util.List;
 public class TaskRepository {
     private final TaskJpaRepository taskJpaRepository;
 
-    public Task createTask(Long goalId, String description, Integer order) {
+    public Task createTask(Long stepId, String description) {
         TaskJpa newTask = TaskJpa.builder()
-                .goalId(goalId)
+                .stepId(stepId)
                 .description(description)
-                .orderIndex(order)
                 .build();
         return taskJpaRepository.save(newTask);
     }
 
-    public List<Task> getTasksForGoal(Long goalId) {
-       return taskJpaRepository.findAll(buildExample(goalId)).stream()
+    public List<Task> getTasksForStep(Long stepId) {
+       return taskJpaRepository.findAll(buildExample(stepId)).stream()
                .map(this::toTask)
                .toList();
     }
@@ -32,6 +31,12 @@ public class TaskRepository {
     public Task findTaskById(Long taskId) {
         return taskJpaRepository.findById(taskId)
                 .orElseThrow(this::throwNotFound);
+    }
+
+    public List<Task> getTaskList() {
+       return taskJpaRepository.findAllByCompletedFalse().stream()
+               .map(task -> (Task) task)
+               .toList();
     }
 
     public void delete(Long taskId) {
@@ -42,8 +47,8 @@ public class TaskRepository {
        return new EntityNotFoundException("No Task found by that id");
     }
 
-    private Example<TaskJpa> buildExample(Long goalId) {
-        return Example.of(TaskJpa.builder().goalId(goalId).build());
+    private Example<TaskJpa> buildExample(Long stepId) {
+        return Example.of(TaskJpa.builder().stepId(stepId).build());
     }
     private Task toTask(TaskJpa jpa){
         return jpa;
