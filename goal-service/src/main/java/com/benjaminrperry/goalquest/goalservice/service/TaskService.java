@@ -1,10 +1,13 @@
 package com.benjaminrperry.goalquest.goalservice.service;
 
+import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
 import com.benjaminrperry.goalquest.goalservice.api.task.Task;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.benjaminrperry.goalquest.goalservice.repository.TaskRepository;
+
+import java.util.List;
 
 import static org.springframework.util.StringUtils.hasLength;
 
@@ -15,24 +18,21 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
-    public Task createTask(Long goalId, String description, Integer order){
+    public Task createTaskFromStep(Step step){
         return taskRepository.createTask(
-                goalId,
-                description,
-                order
+                step.getId(),
+                step.getDescription()
         );
     }
 
-//    public Task updateTask(UpdateTaskMessage updateTaskMessage) {
-//        Task task = taskRepository.findTaskById(updateTaskMessage.getTaskId());
-//        if (hasLength(updateTaskMessage.getDescription())) {
-//            task.setDescription(updateTaskMessage.getDescription());
-//        }
-//        if (updateTaskMessage.getOrderIndex() != null) {
-//            task.setOrderIndex(updateTaskMessage.getOrderIndex());
-//        }
-//        return task;
-//    }
+    public Task getTaskById(Long taskId) {
+       return taskRepository.findTaskById(taskId);
+    }
+
+    public List<Task> getTaskList() {
+       return taskRepository.getTaskList();
+    }
+
 
     public void deleteTask(Long taskId) {
         taskRepository.delete(taskId);
@@ -40,6 +40,6 @@ public class TaskService {
 
     public void completeTask(Long taskId) {
         Task task = taskRepository.findTaskById(taskId);
-        task.setComplete(true);
+        task.complete();
     }
 }

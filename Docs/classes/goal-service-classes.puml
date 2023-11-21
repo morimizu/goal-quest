@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Goal {
+    Long getId()
+    GoalType getType()
+    Date getCreationDate()
+    boolean isActive()
+    List<Step> getSteps()
+}
+
+class GoalJpa {
+    Long id
+    GoalType type
+    List<StepJpa> steps
+    Date creationDate
+    boolean active
+}
+
+interface Step {
+    Long getId()
+    Long getGoalId()
+    String getDescription()
+    Date getDueDate()
+    boolean isCompleted()
+    Date getCompletionDate()
+    void complete()
+}
+
+class StepJpa {
+    Long stepId
+    Long goalId
+    String description
+    Date dueDate
+    boolean completed
+    Date completionDate
+}
+
+interface Task {
+   Long getId()
+   getDescription()
+   getDueDate()
+   isCompleted()
+   complete()
+}
+
+class TaskJpa {
+    Long taskId
+    StepJpa step
+
+}
+
+enum GoalType {
+    COMPLETE_BY
+}
+
+Goal <|-- GoalJpa
+
+@enduml

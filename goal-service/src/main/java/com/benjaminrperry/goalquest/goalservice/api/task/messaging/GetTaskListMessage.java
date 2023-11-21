@@ -7,6 +7,6 @@ import java.io.Serializable;
 
 @Data
 @Builder
-public class DeleteTaskMessage implements Serializable {
-    private Long taskId;
+public class GetTaskListMessage implements Serializable {
+    private Long userId;
 }

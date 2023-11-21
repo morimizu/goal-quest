@@ -14,8 +14,8 @@ public class GoalConverter {
     public static GoalDTO toGoalDTO(Goal goal) {
         return GoalDTO.builder()
                 .id(goal.getId())
-                .description(goal.getDescription())
-                .completed(goal.isCompleted())
+                .type(goal.getType().name())
+                .active(goal.isActive())
                 .steps(convertSteps(goal.getSteps()))
                 .build();
     }
@@ -23,12 +23,5 @@ public class GoalConverter {
         return steps.stream()
                 .map(StepConverter::toDto)
                 .toList();
-    }
-    public static Goal toGoal(GoalDTO dto) {
-        return GoalJpa.builder()
-                .id(dto.getId())
-                .description(dto.getDescription())
-                .completed(dto.isCompleted())
-                .build();
     }
 }

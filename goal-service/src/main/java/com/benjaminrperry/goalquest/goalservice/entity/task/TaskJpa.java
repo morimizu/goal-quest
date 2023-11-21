@@ -12,6 +12,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "task")
 @Builder
@@ -23,14 +25,15 @@ public class TaskJpa implements Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "goal_id")
-    private Long goalId;
-    @Column(name = "order_index")
-    private Integer orderIndex;
+    @Column(name = "step_id")
+    private Long stepId;
     @Column(name = "description")
     private String description;
-    @Column(name = "complete")
-    private boolean complete;
+    @Column(name = "completed")
+    private boolean completed;
+    @Column(name = "completion_date")
+    private LocalDateTime completionDate;
+
 
     @Override
     public void setDescription(String description) {
@@ -38,13 +41,9 @@ public class TaskJpa implements Task {
     }
 
     @Override
-    public void setOrderIndex(Integer orderIndex) {
-        this.orderIndex = orderIndex;
-    }
-
-    @Override
-    public void setComplete(boolean complete) {
-        this.complete = complete;
+    public void complete() {
+        this.completed = true;
+        this.completionDate = LocalDateTime.now();
     }
 
 }

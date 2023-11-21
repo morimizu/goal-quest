@@ -9,10 +9,10 @@ public class StepConverter {
     public static StepDto toDto(Step step) {
         return StepDto.builder()
                 .id(step.getId())
-                .goalId(step.getGoal().getId())
                 .description(step.getDescription())
-                .orderIndex(step.getOrderIndex())
+                .dueDate(step.getDueDate())
                 .completed(step.isCompleted())
+                .completionDate(step.getCompletionDate())
                 .build();
     }
 }

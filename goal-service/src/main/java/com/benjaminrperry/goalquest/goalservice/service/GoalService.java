@@ -1,10 +1,9 @@
 package com.benjaminrperry.goalquest.goalservice.service;
 
 import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
+import com.benjaminrperry.goalquest.goalservice.api.goal.GoalType;
 import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
 import com.benjaminrperry.goalquest.goalservice.api.goal.dto.CreateStepDto;
-import com.benjaminrperry.goalquest.goalservice.api.task.Task;
-import com.benjaminrperry.goalquest.goalservice.api.task.dto.CreateTaskDTO;
 import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import com.benjaminrperry.goalquest.goalservice.entity.StepJpa;
 import com.benjaminrperry.goalquest.goalservice.repository.GoalRepository;
@@ -25,24 +24,24 @@ public class GoalService {
     private final StepRepository stepRepository;
     private final TaskRepository taskRepository;
 
-    public Goal createGoal(String description, List<CreateStepDto> stepList) {
-        log.info("creating new goal with descr: "+ description);
+    public Goal createGoal(String type, List<CreateStepDto> stepList) {
+        log.info("creating new goal of type: "+ type);
+        GoalType goalType = GoalType.valueOf(type);
         GoalJpa goal = GoalJpa.builder()
-                .description(description)
+                .type(goalType)
                 .steps(stepList.stream()
-                        .map(step -> createStep(step, stepList.indexOf(step)))
+                        .map(step -> (Step) createStep(step))
                         .toList())
                 .build();
-        goal = goalRepository.save(goal);
-        return goal;
+        return goalRepository.save(goal);
 
     }
 
-    private Step createStep(CreateStepDto stepDto, Integer order){
+    private StepJpa createStep(CreateStepDto stepDto){
         StepJpa step = new StepJpa();
         step.setDescription(stepDto.getDescription());
-        step.setOrderIndex(order);
-        return (Step) step;
+        step.setDueDate(stepDto.getDueDate());
+        return step;
     }
 
     public Optional<Goal> findGoalById(Integer id) {
@@ -53,22 +52,5 @@ public class GoalService {
         return goalRepository.findAll().stream().map(goal -> (Goal) goal).toList();
     }
 
-    public Goal completeGoal(Integer id) {
-        Optional<Goal> goal = findGoalById(id);
-        if(goal.isPresent()){
-            goal.get().setCompleted(true);
-            return goalRepository.save((GoalJpa) goal.get());
-        }
-        return null;
-    }
 
-    public List<Task> getGoalTasks(Long goalId) {
-       return taskRepository.getTasksForGoal(goalId);
-    }
-
-    private List<Task> createTaskList(List<CreateTaskDTO> taskList) {
-        return taskList.stream()
-                .map(dto -> taskRepository.createTask(dto.getGoalId(), dto.getDescription(), dto.getOrderIndex()))
-                .toList();
-    }
 }

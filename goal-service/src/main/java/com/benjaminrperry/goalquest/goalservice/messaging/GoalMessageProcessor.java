@@ -1,8 +1,6 @@
 package com.benjaminrperry.goalquest.goalservice.messaging;
 
-import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
 import com.benjaminrperry.goalquest.goalservice.api.goal.dto.GoalDTO;
-import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.CompleteGoalMessage;
 import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.CreateGoalMessage;
 import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.GetGoalMessage;
 import com.benjaminrperry.goalquest.goalservice.api.goal.messaging.GetGoalsMessage;
@@ -31,7 +29,7 @@ public class GoalMessageProcessor {
     @RabbitHandler
     public GoalDTO handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
         log.info("received new message: "+ createGoalMessage);
-        var goal = goalService.createGoal(createGoalMessage.getDescription(), createGoalMessage.getStepList());
+        var goal = goalService.createGoal(createGoalMessage.getType(), createGoalMessage.getStepList());
         return GoalConverter.toGoalDTO(goal);
     }
 
@@ -43,18 +41,8 @@ public class GoalMessageProcessor {
 
     @RabbitHandler
     public List<GoalDTO> handelGetGoals(@Payload GetGoalsMessage getGoalsMessage) {
-        if(getGoalsMessage.getGoalId() != null) {
-            return List.of(goalService.findGoalById(getGoalsMessage.getGoalId())
-                            .map(GoalConverter::toGoalDTO)
-                    .orElseThrow(()-> new NoSuchElementException("cannot find goal")));
-        }
         return goalService.findAllGoals().stream()
                 .map(GoalConverter::toGoalDTO)
                 .toList();
-    }
-
-    @RabbitHandler
-    public Goal handelCompleteGoal(@Payload CompleteGoalMessage completeGoalMessage) {
-        return goalService.completeGoal(completeGoalMessage.getGoalId());
     }
 }
