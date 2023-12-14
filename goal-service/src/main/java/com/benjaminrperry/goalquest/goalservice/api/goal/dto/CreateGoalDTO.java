@@ -12,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateGoalDTO {
-    private String description;
+    private String type;
     private List<CreateStepDto> steps;
 }

@@ -1,0 +1,5 @@
+<div>
+  <h3 class="bg-primary text-center border border-black">Current Gaols</h3>
+  <div class="list-group list-group-flush"></div>
+  <app-goal-list-item *ngFor="let goal of goals" [goal]="goal" />
+</div>

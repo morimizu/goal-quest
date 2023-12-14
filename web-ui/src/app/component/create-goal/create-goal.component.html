@@ -1,0 +1,14 @@
+<div>
+  <h2>Create New Goal</h2>
+  <form [formGroup]="singleStepForm" (ngSubmit)="onSingleSubmit()">
+    <label for="descr1">Description
+    <input id="descr1" type="text" formControlName="description" />
+    </label>
+    <label for="dueDate1">Due by
+      <input id="dueDate1" type="date" formControlName="dueDate" />
+    </label>
+    <button type="submit" [disabled]="!singleStepForm.valid">Add Goal</button>
+  </form>
+  <app-goal-list />
+</div>
+
