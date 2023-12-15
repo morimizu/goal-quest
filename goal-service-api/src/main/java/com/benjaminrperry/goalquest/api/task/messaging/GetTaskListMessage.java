@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalquest.goalservice.api.task.messaging;
+package com.benjaminrperry.goalquest.api.task.messaging;
 
 import lombok.Builder;
 import lombok.Data;

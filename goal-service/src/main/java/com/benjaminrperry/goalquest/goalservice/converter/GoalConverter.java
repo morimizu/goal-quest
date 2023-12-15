@@ -1,9 +1,9 @@
 package com.benjaminrperry.goalquest.goalservice.converter;
 
-import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
-import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
-import com.benjaminrperry.goalquest.goalservice.api.goal.dto.GoalDTO;
-import com.benjaminrperry.goalquest.goalservice.api.goal.dto.StepDto;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.Step;
+import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
+import com.benjaminrperry.goalquest.api.goal.dto.StepDto;
 import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import lombok.experimental.UtilityClass;
 

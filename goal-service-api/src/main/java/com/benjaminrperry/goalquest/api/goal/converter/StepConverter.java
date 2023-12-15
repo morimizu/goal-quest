@@ -1,4 +1,4 @@
-package com.benjaminrperry.goalquest.goalservice.converter;
+package com.benjaminrperry.goalquest.api.goal.converter;
 
 import com.benjaminrperry.goalquest.api.goal.Step;
 import com.benjaminrperry.goalquest.api.goal.dto.StepDto;
@@ -10,7 +10,7 @@ public class StepConverter {
         return StepDto.builder()
                 .id(step.getId())
                 .description(step.getDescription())
-                .dueDate((step.getDueDate() == null) ? "" : step.getDueDate().toString())
+                .dueDate((step.getDueDate()== null) ? "" : step.getDueDate().toString())
                 .completed(step.isCompleted())
                 .completionDate(step.getCompletionDate())
                 .build();

@@ -1,10 +1,11 @@
 package com.benjaminrperry.goalquest.goalservice.entity;
 
-import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
-import com.benjaminrperry.goalquest.goalservice.api.goal.GoalType;
-import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.GoalType;
+import com.benjaminrperry.goalquest.api.goal.Step;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -39,6 +41,7 @@ public class GoalJpa implements Goal, Serializable {
     @Column(name = "active")
     private boolean active = false;
 
+    @CreationTimestamp
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
@@ -47,7 +50,7 @@ public class GoalJpa implements Goal, Serializable {
         this.active = active;
     }
 
-    @OneToMany(targetEntity = StepJpa.class)
+    @OneToMany(targetEntity = StepJpa.class, mappedBy = "goal",fetch = FetchType.EAGER)
     private List<Step> steps;
 
     @Override

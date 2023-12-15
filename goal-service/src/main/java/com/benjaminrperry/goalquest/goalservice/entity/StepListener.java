@@ -16,8 +16,10 @@ public class StepListener {
 
     @PrePersist
     private void onCreate(StepJpa stepJpa) {
-        assert taskService != null;
-        taskService.createTaskFromStep(stepJpa);
+        if(taskService != null) {
+            taskService.createTaskFromStep(stepJpa);
+        }
+
     }
 
 }

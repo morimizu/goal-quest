@@ -1,6 +1,6 @@
 package com.benjaminrperry.goalquest.goalservice.entity.task;
 
-import com.benjaminrperry.goalquest.goalservice.api.task.Task;
+import com.benjaminrperry.goalquest.api.task.Task;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -33,6 +35,9 @@ public class TaskJpa implements Task {
     private boolean completed;
     @Column(name = "completion_date")
     private LocalDateTime completionDate;
+    @CreationTimestamp
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 
 
     @Override
@@ -45,5 +50,4 @@ public class TaskJpa implements Task {
         this.completed = true;
         this.completionDate = LocalDateTime.now();
     }
-
 }

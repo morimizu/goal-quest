@@ -1,9 +1,9 @@
 package com.benjaminrperry.goalquest.goalservice.service;
 
-import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
-import com.benjaminrperry.goalquest.goalservice.api.goal.GoalType;
-import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
-import com.benjaminrperry.goalquest.goalservice.api.goal.dto.CreateStepDto;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.GoalType;
+import com.benjaminrperry.goalquest.api.goal.Step;
+import com.benjaminrperry.goalquest.api.goal.dto.CreateStepDto;
 import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import com.benjaminrperry.goalquest.goalservice.entity.StepJpa;
 import com.benjaminrperry.goalquest.goalservice.repository.GoalRepository;
@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,18 +31,23 @@ public class GoalService {
         GoalType goalType = GoalType.valueOf(type);
         GoalJpa goal = GoalJpa.builder()
                 .type(goalType)
-                .steps(stepList.stream()
-                        .map(step -> (Step) createStep(step))
-                        .toList())
                 .build();
-        return goalRepository.save(goal);
+        goal = goalRepository.save(goal);
+        final var savedGoal = goal;
+        var steps = stepList.stream()
+                .map(step -> (Step) createStep(savedGoal, step))
+                .toList();
+        goal.setSteps(steps);
+        return goal;
 
     }
 
-    private StepJpa createStep(CreateStepDto stepDto){
+    private StepJpa createStep(GoalJpa goal,CreateStepDto stepDto){
         StepJpa step = new StepJpa();
+        step.setGoal(goal);
         step.setDescription(stepDto.getDescription());
-        step.setDueDate(stepDto.getDueDate());
+        step.setDueDate(LocalDate.parse(stepDto.getDueDate(), DateTimeFormatter.ISO_LOCAL_DATE));
+        step = stepRepository.save(step);
         return step;
     }
 

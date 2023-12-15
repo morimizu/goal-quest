@@ -25,6 +25,7 @@ export class CreateGoalComponent {
   )
   multiStepForm = new FormGroup([])
   @Output() createClicked = new EventEmitter<CreateGaol>();
+  @Output() goalCreated = new EventEmitter<Goal>();
 
 
   constructor(private goalService: GoalService) {
@@ -44,7 +45,18 @@ export class CreateGoalComponent {
         }
       ]
     }
-    this.goalService.createGoal(newGoal);
+    this.goalService.sendCreateGoal(newGoal).subscribe(
+      {
+        next: value => {
+          console.log('goal created:' + value);
+          this.goalCreated.emit(value);
+        },
+        error: err => {
+          console.error(err);
+          this.goalCreated.emit(this.goalService.createGoal(newGoal))
+        }
+      }
+    );
     this.singleStepForm.controls.description.setValue('')
     this.singleStepForm.controls.dueDate.setValue('')
   }

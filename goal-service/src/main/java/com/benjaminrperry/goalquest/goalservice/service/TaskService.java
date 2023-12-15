@@ -1,9 +1,10 @@
 package com.benjaminrperry.goalquest.goalservice.service;
 
-import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
-import com.benjaminrperry.goalquest.goalservice.api.task.Task;
+import com.benjaminrperry.goalquest.api.goal.Step;
+import com.benjaminrperry.goalquest.api.task.Task;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 import com.benjaminrperry.goalquest.goalservice.repository.TaskRepository;
 
@@ -13,6 +14,7 @@ import static org.springframework.util.StringUtils.hasLength;
 
 @Service
 @Transactional
+@DependsOn("stepListener")
 @RequiredArgsConstructor
 public class TaskService {
 

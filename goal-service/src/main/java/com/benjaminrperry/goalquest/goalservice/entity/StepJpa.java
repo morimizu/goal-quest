@@ -1,7 +1,7 @@
 package com.benjaminrperry.goalquest.goalservice.entity;
 
-import com.benjaminrperry.goalquest.goalservice.api.goal.Goal;
-import com.benjaminrperry.goalquest.goalservice.api.goal.Step;
+import com.benjaminrperry.goalquest.api.goal.Goal;
+import com.benjaminrperry.goalquest.api.goal.Step;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -16,7 +16,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,18 +35,22 @@ public class StepJpa implements Step {
     private Long id;
 
     @ManyToOne(targetEntity = GoalJpa.class)
-    @JoinColumn(name = "goal_id")
+    @JoinColumn(name = "goal_id", nullable = false)
     private Goal goal;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "due_date")
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 
     @Column(name = "completed")
     private boolean completed;
 
     @Column(name = "completion_date")
     private LocalDateTime completionDate;
+
+    @CreationTimestamp
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 }
