@@ -9,10 +9,9 @@ public class TaskConverter {
     public static TaskDTO toDto(Task model) {
         return TaskDTO.builder()
                 .id(model.getId())
-                .goalId(model.getGoalId())
+                .stepId(model.getStepId())
                 .description(model.getDescription())
-                .orderIndex(model.getOrderIndex())
-                .complete(model.isComplete())
+                .completed(model.isCompleted())
                 .build();
     }
 }

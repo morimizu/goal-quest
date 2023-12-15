@@ -1,15 +1,18 @@
 package com.benjaminrperry.goalquest.api.goal.dto;
 
-import com.benjaminrperry.goalquest.api.goal.Step;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @Builder
-public class StepDto implements Step {
+public class StepDto implements Serializable {
     private Long id;
-    private Long goal;
     private String description;
-    private Integer orderIndex;
+    private String dueDate;
     private boolean completed;
+    private LocalDateTime completionDate;
 }

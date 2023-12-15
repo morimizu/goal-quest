@@ -1,9 +1,9 @@
 package com.benjaminrperry.goalquest.goalservice.messaging;
 
-import com.benjaminrperry.goalquest.goalservice.api.task.converter.TaskConverter;
-import com.benjaminrperry.goalquest.goalservice.api.task.dto.TaskDTO;
-import com.benjaminrperry.goalquest.goalservice.api.task.messaging.GetTaskListMessage;
-import com.benjaminrperry.goalquest.goalservice.api.task.messaging.GetTaskMessage;
+import com.benjaminrperry.goalquest.api.task.converter.TaskConverter;
+import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
+import com.benjaminrperry.goalquest.api.task.messaging.GetTaskListMessage;
+import com.benjaminrperry.goalquest.api.task.messaging.GetTaskMessage;
 import com.benjaminrperry.goalquest.goalservice.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

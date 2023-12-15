@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/goal-quest.iml" filepath="$PROJECT_DIR$/.idea/goal-quest.iml" />
       <module fileurl="file://$PROJECT_DIR$/goal-service/goal-service.iml" filepath="$PROJECT_DIR$/goal-service/goal-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goal-service-api/goal-service-api.iml" filepath="$PROJECT_DIR$/goal-service-api/goal-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/goalquest-rest-gateway/goalquest-rest-gateway.iml" filepath="$PROJECT_DIR$/goalquest-rest-gateway/goalquest-rest-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-ui/web-ui.iml" filepath="$PROJECT_DIR$/web-ui/web-ui.iml" />
     </modules>

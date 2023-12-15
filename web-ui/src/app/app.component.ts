@@ -19,10 +19,8 @@ import {TodoListComponent} from "./component/todo-list/todo-list.component";
 })
 export class AppComponent {
   title = 'Goal Quest';
-  goals: Goal[];
 
   constructor(goalService: GoalService) {
-    this.goals = goalService.getAllGoals();
   }
 
   createGoal(createGoal: CreateGaol){

@@ -4,6 +4,11 @@ CREATE TABLE IF NOT EXISTS goals (
   active BOOLEAN,
   creation_date TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS goals_steps
+(
+    id          int NOT NULL,
+    goal_jpa_id int not null
+);
 CREATE TABLE IF NOT EXISTS steps (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     goal_id int NOT NULL,

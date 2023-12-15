@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.benjaminrperry</groupId>
     <artifactId>goal-service-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>goal-service-api</name>
     <description>shared classes for goal-service</description>
     <packaging>jar</packaging>

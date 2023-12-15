@@ -11,6 +11,6 @@ import java.util.List;
 @Data
 @Builder
 public class CreateGoalMessage implements Serializable {
-    private String description;
+    private String type;
     private List<CreateStepDto> stepList;
 }

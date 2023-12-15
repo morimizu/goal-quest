@@ -1,12 +1,13 @@
 package com.benjaminrperry.goalquest.api.task;
 
+import java.time.LocalDateTime;
+
 public interface Task {
     Long getId();
-    Long getGoalId();
+    Long getStepId();
     String getDescription();
-    Integer getOrderIndex();
-    boolean isComplete();
+    boolean isCompleted();
+    LocalDateTime getCompletionDate();
     void setDescription(String description);
-    void setOrderIndex(Integer orderIndex);
-    void setComplete(boolean complete);
+    void complete();
 }

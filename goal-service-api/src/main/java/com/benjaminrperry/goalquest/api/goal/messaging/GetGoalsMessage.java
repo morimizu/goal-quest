@@ -3,8 +3,10 @@ package com.benjaminrperry.goalquest.api.goal.messaging;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder
-public class GetGoalsMessage {
-    private Integer goalId;
+public class GetGoalsMessage implements Serializable {
+    private Integer userId;
 }
