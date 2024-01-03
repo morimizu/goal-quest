@@ -6,11 +6,15 @@ import com.benjaminrperry.goalquest.api.goal.Step;
 import com.benjaminrperry.goalquest.api.goal.dto.CreateStepDto;
 import com.benjaminrperry.goalquest.goalservice.entity.GoalJpa;
 import com.benjaminrperry.goalquest.goalservice.entity.StepJpa;
+import com.benjaminrperry.goalquest.goalservice.event.CreateStepEvent;
 import com.benjaminrperry.goalquest.goalservice.repository.GoalRepository;
 import com.benjaminrperry.goalquest.goalservice.repository.StepRepository;
 import com.benjaminrperry.goalquest.goalservice.repository.TaskRepository;
+import jakarta.persistence.PostPersist;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,7 +28,7 @@ import java.util.Optional;
 public class GoalService {
     private final GoalRepository goalRepository;
     private final StepRepository stepRepository;
-    private final TaskRepository taskRepository;
+    private final TaskService taskService;
 
     public Goal createGoal(String type, List<CreateStepDto> stepList) {
         log.info("creating new goal of type: "+ type);
@@ -60,4 +64,8 @@ public class GoalService {
     }
 
 
+    @EventListener
+    public void onCreateStepEvent(CreateStepEvent event) {
+        this.taskService.createTaskFromStep(event.getStep());
+    }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Task, tasks} from './task';
 import {Step} from "./Step";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import {Step} from "./Step";
 export class TaskService {
   tasks: Task[] = [...tasks]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   completeTask(task: Task) :Task {
     task.completed = true;
@@ -24,7 +26,7 @@ export class TaskService {
     }
     this.tasks.push(newTask)
   }
-  getDailyTasks(): Task[] {
-    return this.tasks
+  getDailyTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`http://localhost:8080/task`);
   }
 }

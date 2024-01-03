@@ -1,12 +1,13 @@
 package com.benjaminrperry.goalquest.controller.task;
 
 
-import com.benjaminrperry.client.task.messaging.RabbitTaskClient;
+import com.benjaminrperry.client.goal.messaging.RabbitTaskClient;
 import com.benjaminrperry.goalquest.api.task.converter.TaskConverter;
 import com.benjaminrperry.goalquest.api.task.dto.CreateTaskDTO;
 import com.benjaminrperry.goalquest.api.task.dto.TaskDTO;
 import com.benjaminrperry.goalquest.api.task.dto.UpdateTaskDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/task")
+@CrossOrigin
 @RequiredArgsConstructor
 public class TaskController {
     private final RabbitTaskClient rabbitTaskClient;
@@ -31,7 +33,7 @@ public class TaskController {
     @PostMapping
     @ResponseStatus(CREATED)
     public TaskDTO createTask(CreateTaskDTO createTaskDTO) {
-       return toDto(rabbitTaskClient.createTask(createTaskDTO.getGoalId(), createTaskDTO.getDescription(), createTaskDTO.getOrderIndex()));
+       return rabbitTaskClient.createTask(createTaskDTO);
     }
 
     @PatchMapping("/{taskId}")
@@ -41,13 +43,12 @@ public class TaskController {
 
     @GetMapping("/{taskId}")
     public @ResponseBody TaskDTO getTask(@PathVariable(name = "taskId") Long taskId) {
-        return toDto(rabbitTaskClient.getTask(taskId));
+        return rabbitTaskClient.getTask(taskId);
     }
 
     @GetMapping
     public @ResponseBody List<TaskDTO> getAllTasks() {
-        return rabbitTaskClient.getAllTasks().stream()
-                .map(TaskConverter::toDto)
+        return rabbitTaskClient.getTaskList().stream()
                 .toList();
     }
 
