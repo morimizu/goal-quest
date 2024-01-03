@@ -27,12 +27,14 @@ public class TaskMessageProcessor {
 
 
     @RabbitHandler
-    public Optional<TaskDTO> handelGetGoal(@Payload GetTaskMessage getTaskMessage) {
+    public Optional<TaskDTO> handelGetTask(@Payload GetTaskMessage getTaskMessage) {
+        log.info("processing GetTaskMessage");
         return Optional.of(TaskConverter.toDto(taskService.getTaskById(getTaskMessage.getTaskId())));
     }
 
     @RabbitHandler
     public List<TaskDTO> handelGetTaskList(@Payload GetTaskListMessage getTaskListMessage) {
+        log.info("processing GetTaskListMessage");
         return taskService.getTaskList().stream().map(TaskConverter::toDto).toList();
     }
 }

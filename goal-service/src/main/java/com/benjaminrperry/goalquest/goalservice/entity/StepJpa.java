@@ -2,6 +2,9 @@ package com.benjaminrperry.goalquest.goalservice.entity;
 
 import com.benjaminrperry.goalquest.api.goal.Goal;
 import com.benjaminrperry.goalquest.api.goal.Step;
+import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.goalservice.entity.task.TaskJpa;
+import com.benjaminrperry.goalquest.goalservice.listener.StepListener;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -10,6 +13,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PostPersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
