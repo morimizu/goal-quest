@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -14,18 +15,12 @@ import java.util.List;
 public class TaskRepository {
     private final TaskJpaRepository taskJpaRepository;
 
-    public Task createTask(Long stepId, String description) {
+    public Task createTask(String description, LocalDate dueDate) {
         TaskJpa newTask = TaskJpa.builder()
-                .stepId(stepId)
                 .description(description)
+                .dueDate(dueDate)
                 .build();
         return taskJpaRepository.save(newTask);
-    }
-
-    public List<Task> getTasksForStep(Long stepId) {
-       return taskJpaRepository.findAll(buildExample(stepId)).stream()
-               .map(this::toTask)
-               .toList();
     }
 
     public Task findTaskById(Long taskId) {
@@ -45,12 +40,5 @@ public class TaskRepository {
 
     private EntityNotFoundException throwNotFound() {
        return new EntityNotFoundException("No Task found by that id");
-    }
-
-    private Example<TaskJpa> buildExample(Long stepId) {
-        return Example.of(TaskJpa.builder().stepId(stepId).build());
-    }
-    private Task toTask(TaskJpa jpa){
-        return jpa;
     }
 }

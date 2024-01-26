@@ -1,0 +1,12 @@
+<div>
+  <h2>Create New Task</h2>
+  <form [formGroup]="newTaskForm" (ngSubmit)="onSubmit()">
+    <label for="descr1">Description
+      <input id="descr1" type="text" formControlName="description" />
+    </label>
+    <label for="dueDate1">Due by
+      <input id="dueDate1" type="date" formControlName="dueDate" />
+    </label>
+    <button type="submit" [disabled]="!newTaskForm.valid">Add Task</button>
+  </form>
+</div>

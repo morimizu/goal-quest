@@ -16,6 +16,12 @@ export class TodoListComponent {
 
   constructor(private taskService: TaskService) {
     this.reloadList()
+    taskService.taskCreated.subscribe({
+      next: () => {
+        console.log(`ToDoList heard task created next`)
+        this.reloadList()
+      }
+    })
   }
 
   reloadList() {
