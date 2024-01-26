@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TaskJpaRepository extends JpaRepository<TaskJpa, Long> {
-    TaskJpa findByStepId(Long stepId);
     List<TaskJpa> findAllByCompletedFalse();
     List<TaskJpa> findAllByCompletedTrue();
 }

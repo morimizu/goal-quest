@@ -1,17 +1,16 @@
 package com.benjaminrperry.goalquest.goalservice.service;
 
-import com.benjaminrperry.goalquest.api.goal.Step;
 import com.benjaminrperry.goalquest.api.task.Task;
+import com.benjaminrperry.goalquest.api.task.dto.CreateTaskDto;
+import com.benjaminrperry.goalquest.goalservice.repository.TaskRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.DependsOn;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import com.benjaminrperry.goalquest.goalservice.repository.TaskRepository;
 
+import java.time.LocalDate;
 import java.util.List;
-
-import static org.springframework.util.StringUtils.hasLength;
 
 @Service
 @Transactional
@@ -21,11 +20,11 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
-    public Task createTaskFromStep(Step step){
-        log.info("creating task from Step");
+    public Task createTask(String description, LocalDate dueDate){
+        log.info("creating new task");
         return taskRepository.createTask(
-                step.getId(),
-                step.getDescription()
+                description,
+                dueDate
         );
     }
 
@@ -44,8 +43,9 @@ public class TaskService {
         taskRepository.delete(taskId);
     }
 
-    public void completeTask(Long taskId) {
+    public Task completeTask(Long taskId) {
         Task task = taskRepository.findTaskById(taskId);
         task.complete();
+        return task;
     }
 }

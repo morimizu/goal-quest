@@ -35,7 +35,6 @@ export class GoalService {
                     completed: false,
                     dueDate: step.dueDate
                   }
-                  this.taskService.createTask(newStep);
                   return newStep;
                 })
               }

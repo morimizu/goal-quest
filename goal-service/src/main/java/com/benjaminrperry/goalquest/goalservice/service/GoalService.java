@@ -31,7 +31,7 @@ public class GoalService {
     private final TaskService taskService;
 
     public Goal createGoal(String type, List<CreateStepDto> stepList) {
-        log.info("creating new goal of type: "+ type);
+        log.info("creating new goal of type: " + type);
         GoalType goalType = GoalType.valueOf(type);
         GoalJpa goal = GoalJpa.builder()
                 .type(goalType)
@@ -46,7 +46,7 @@ public class GoalService {
 
     }
 
-    private StepJpa createStep(GoalJpa goal,CreateStepDto stepDto){
+    private StepJpa createStep(GoalJpa goal, CreateStepDto stepDto) {
         StepJpa step = new StepJpa();
         step.setGoal(goal);
         step.setDescription(stepDto.getDescription());
@@ -61,11 +61,5 @@ public class GoalService {
 
     public List<Goal> findAllGoals() {
         return goalRepository.findAll().stream().map(goal -> (Goal) goal).toList();
-    }
-
-
-    @EventListener
-    public void onCreateStepEvent(CreateStepEvent event) {
-        this.taskService.createTaskFromStep(event.getStep());
     }
 }

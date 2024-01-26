@@ -1,10 +1,10 @@
 package com.benjaminrperry.goalquest.goalservice.messaging;
 
+import com.benjaminrperry.goalquest.api.goal.converter.GoalConverter;
 import com.benjaminrperry.goalquest.api.goal.messaging.CreateGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalMessage;
 import com.benjaminrperry.goalquest.api.goal.messaging.GetGoalsMessage;
 import com.benjaminrperry.goalquest.api.goal.dto.GoalDTO;
-import com.benjaminrperry.goalquest.goalservice.converter.GoalConverter;
 import com.benjaminrperry.goalquest.goalservice.service.GoalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.benjaminrperry.goalquest.api.goal.converter.GoalConverter.toGoalDTO;
 
 
 @RabbitListener(queues = "${goalquest.rabbit.bindings.goal.queue-name}")
@@ -29,7 +31,7 @@ public class GoalMessageProcessor {
     public GoalDTO handelCreateGoal(@Payload CreateGoalMessage createGoalMessage) {
         log.info("received new CreateGoalMessage");
         var goal = goalService.createGoal(createGoalMessage.getType(), createGoalMessage.getStepList());
-        return GoalConverter.toGoalDTO(goal);
+        return toGoalDTO(goal);
     }
 
     @RabbitHandler

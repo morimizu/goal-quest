@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,12 +32,12 @@ public class TaskJpa implements Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "step_id")
-    private Long stepId;
     @Column(name = "description")
     private String description;
     @Column(name = "completed")
     private boolean completed;
+    @Column(name = "due_date")
+    private LocalDate dueDate;
     @Column(name = "completion_date")
     private LocalDateTime completionDate;
     @CreationTimestamp
